@@ -215,3 +215,116 @@ function myFunction(a) {
 function myFunction(a) {
   return a.reduce((pv, cv) => ({ ...pv, [cv]: pv[cv] ? pv[cv] + 1 : 1 }), {});
 }
+
+
+
+
+//DATES JS
+
+
+
+// Sounds easy, but you need to know the trick
+// Write a function that takes two date instances as arguments
+// It should return true if the dates are equal
+// It should return false otherwise
+
+function myFunction(a, b) {
+   
+    return a.getTime() === b.getTime()
+ }
+
+// Write a function that takes two date instances as argument
+// It should return the number of days that lies between those dates
+
+function myFunction(a, b) {
+   return Math.abs(a - b) / (24 * 60 * 60 * 1000)
+ }
+
+ //tas pats: 
+ function myFunction(a, b) {
+    const dif = Math.abs(a - b);
+    return dif / 1000 / 60 / 60 / 24
+ }
+
+ // Write a function that takes two date instances as argument
+// It should return true if they fall on the exact same day
+// It should return false otherwise
+
+function myFunction(a, b) {
+    return a.getFullYear() === b.getFullYear() &&
+           a.getMonth() === b.getMonth() &&
+           a.getDate()=== b.getDate()
+  }
+
+  // Write a function that takes two date instances as argument
+// It should return true if the difference between the dates is less than or equal to 1 hour
+// It should return false otherwise
+
+function myFunction(a, b) {
+    return Math.abs(a - b) / 1000 / 60 <= 60
+ }
+
+ //tas pats: 
+ function myFunction(a, b) {
+   return Math.abs(a - b) <= 60 * 60 * 1000
+ }
+
+ // Write a function that takes two date instances (a and b) as arguments
+// It should return true if a is earlier than b
+// It should return false otherwise
+
+function myFunction(a, b) {
+    return a < b
+ }
+
+ // Write a function that takes as argument a date instance (a) and a number (b)
+// It should add b days to a and return the number of milliseconds since January 1, 1970, 00:00:00 UTC
+
+function myFunction(a, b) {
+       return a.setDate(a.getDate() + b)
+ }
+
+ //tas pats: 
+ function myFunction(a, b) {
+  const currentDays = a.getDate();
+  return a.setDate(currentDays + b)
+}
+
+
+// This is a more difficult challenge
+// Write a function that takes two date instances as arguments
+// It should return an object with the properties 'hrs', 'min', and 'sec'
+// The corresponding values should display the absolute difference between the two dates in hours, minutes, and seconds
+
+function myFunction(a, b) {
+    const hrs = Math.abs(a.getHours() - b.getHours());
+    const min = Math.abs(a.getMinutes() - b.getMinutes());
+    const sec = Math.abs(a.getSeconds() - b.getSeconds());
+    return { hrs, min, sec }
+ }
+
+ //tas pats:
+ function myFunction(a, b) {
+    const dif = Math.abs(a - b);
+    const hrs = Math.floor(dif / 1000 / 60 / 60);
+    const min = Math.floor(dif / 1000 / 60) % (hrs * 60 || 60);
+    const sec = Math.floor(dif / 1000) % (min * 60 + hrs * 60 * 60 || 60);
+    return { hrs, min, sec }
+  }
+
+  // Write a function that takes a Date instance as argument
+// It should return the next nearest quarter hour in minutes
+// For example, if the given date has the time 10:01 the function should return 15
+
+function myFunction(date) {
+   return ((~~(date.getMinutes() / 15) + 1) * 15) % 60
+}
+
+// tas pats
+
+function myFunction(date) {
+    const quarter = 15 * 60 * 1000;
+    const closestQuarter = new Date(Math.round(date / quarter) * quarter);
+    const nextQuarter = closestQuarter.getTime() < date.getTime() ? new Date(closestQuarter.getTime() + quarter) : closestQuarter;
+    return nextQuarter.getMinutes();
+    }
