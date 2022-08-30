@@ -112,6 +112,13 @@ function myFunction(x, y) {
   const { b, ...resty } = y;
   return { ...x, ...resty, d: b };
 }
+//tas pats:
+function myFunction(x, y) {
+  y['d']=y.b
+  delete y['b']
+  return {...x, ...y}
+}
+
 
 // Write a function that takes an object (a) and a number (b) as arguments
 // Multiply all values of 'a' by 'b'
@@ -164,6 +171,14 @@ function myFunction(obj) {
   return Object.fromEntries(
     Object.entries(obj).map(([k, v]) => [k, !v.trim() ? null : v])
   );
+}
+//tas pats: 
+function myFunction(obj) {
+  let t={}
+  for (let i in obj) {
+  t[i] = (obj[i]).trim()==''?null:obj[i]
+  }
+  return t
 }
 
 // Write a function that takes an object as argument containing properties with personal information
